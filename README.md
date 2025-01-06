@@ -6,6 +6,10 @@ Bu proje, danışmanlık yaptığım bir öğrenci için dönem sonu projesi ola
 
 Bu proje, ASP.NET MVC framework'ü kullanılarak geliştirilmiş bir web uygulamasıdır. Modern web teknolojileri ve best practice'ler göz önünde bulundurularak tasarlanmıştır.
 
+## Görsel
+# Login Page
+![image](https://github.com/user-attachments/assets/edaf0f17-8d26-402e-80dd-ce9b235da372)
+
 ## Kullanıcı Rolleri ve Görevleri
 
 ### Yönetici (Admin) Görevleri
