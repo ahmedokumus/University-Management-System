@@ -1,0 +1,49 @@
+﻿@using Web_Tasarim.Models
+@model List<Student>
+@{
+    ViewBag.Title = "Memur - Öğrenciler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 10px"><h1>Öğrenciler</h1></div>
+    <table class="table table-striped" style="margin-top:20px;">
+        <tr>
+            <th>Sıra</th>
+            <th>Görsel</th>
+            <th>Kullanıcı Adı</th>
+            <th>Adı Soyadı</th>
+            <th style="text-align: center">Bölüm</th>
+            <th style="text-align: center">İşlem</th>
+        </tr>
+        @{ int sayac = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(sayac++)</td>
+                <td>
+                    <img src="https://localhost:44351/Content/UserImages/@item.ImageUrl"
+                         style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid #999; object-fit: cover; object-position: 50% 15%;" />
+                </td>
+                <td>@item.Username</td>
+                <td>@item.Name @item.Surname</td>
+                <td style="text-align: center">
+                    @if (item.DepartmentId == null)
+                    {
+                        <div style="color: red">Bölüme Kayıt Edilmemiş</div>
+                    }
+                    else
+                    {
+                        <div style="color: greenyellow">@item.Department.DepartmentName</div>
+                    }
+                </td>
+                <td style="text-align: center"><a href="/Officer/StudentUpgrade/@item.StudentId" class="btn btn-outline-warning">Bilgileri Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <div style="margin-top: 20px;">
+        <p align="right"><a href="/Officer/NewStudent/" class="btn btn-primary">  Öğrenci Kayıt  </a></p>
+    </div>
+</div>
+
+@Html.Partial("_OfficerFooterPartial")

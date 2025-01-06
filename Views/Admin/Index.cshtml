@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Admin - Menü";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<h2 style="text-align: center">İstatistikler</h2>
+<br/>
+<div class="row" style="margin-left: 20px;margin-right: 20px">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary text-white mb-4">
+            <div class="card-body" style="text-align: center">@ViewBag.facultyCount</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <div class="small text-white"><i class="fas fa-angle-left"></i></div>
+                <div class="small text-white stretched-link">Fakülte Sayısı</div>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body" style="text-align: center">@ViewBag.departmentCount</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <div class="small text-white"><i class="fas fa-angle-left"></i></div>
+                <div class="small text-white stretched-link">Bölüm Sayısı</div>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body" style="text-align: center">@ViewBag.courseCount</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <div class="small text-white"><i class="fas fa-angle-left"></i></div>
+                <div class="small text-white stretched-link">Ders Sayısı</div>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body" style="text-align: center">@ViewBag.instructorCount</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <div class="small text-white"><i class="fas fa-angle-left"></i></div>
+                <div class="small text-white stretched-link">Öğretim Elemanı Sayısı</div>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_AdminFooterPartial")

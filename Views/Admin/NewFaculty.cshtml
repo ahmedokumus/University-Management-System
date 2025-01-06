@@ -1,0 +1,18 @@
+﻿@model Web_Tasarim.Models.Faculty
+@{
+    ViewBag.Title = "Admin - Yeni Fakülte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px"><h1>Fakülte Ekleme</h1></div>
+    <form class="form-group" method="post">
+        @Html.Label("Fakülte Adı")
+        @Html.TextBoxFor(x => x.FacultyName, new { @class = "form-control" })
+        <div style="margin-top: 20px;">
+            <p align="right"><button class="btn btn-success" style="width: 100px">Ekle</button></p>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("_AdminFooterPartial")

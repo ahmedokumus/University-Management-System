@@ -1,0 +1,42 @@
+﻿@using Web_Tasarim.Models
+@model List<StudentCourse>
+@{
+    ViewBag.Title = "Öğr.Ele. - Öğrenciler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 10px">
+        <h1>@ViewBag.ders Dersini Alan Öğrenciler</h1>
+    </div>
+    <table class="table table-striped" style="margin-top: 20px;">
+        <tr>
+            <th>Sıra</th>
+            <th>Görsel</th>
+            <th>Adı Soyadı</th>
+            <th>Vize</th>
+            <th>Final</th>
+            <th style="text-align: center">İşlem</th>
+        </tr>
+        @{ int sayac = 1;}
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(sayac++)</td>
+                <td>
+                    <img src="https://localhost:44351/Content/UserImages/@item.Student.ImageUrl"
+                         style="width: 50px; height: 50px; border-radius: 50%; border: 1px solid #999; object-fit: cover; object-position: 50% 15%;" />
+                </td>
+                <td>@item.Student.Name @item.Student.Surname</td>
+                <td>@item.Vize</td>
+                <td>@item.Final</td>
+                <td style="text-align: center">
+                    <a href="/Instructor/EnterResult/@item.Id" class="btn btn-outline-success">Not Gir</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+@Html.Partial("_InstructorFooterPartial")

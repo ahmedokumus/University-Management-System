@@ -1,0 +1,30 @@
+﻿@using Web_Tasarim.Models;
+@model List<Department>
+@{
+    ViewBag.Title = "Admin - Bölümler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 10px"><h1>Bölümler</h1></div>
+    <table class="table table-striped" style="margin-top:20px;">
+        <tr>
+            <th>Sıra</th>
+            <th>Bölüm</th>
+            <th>Fakülte</th>
+        </tr>
+        @{ int sayac = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(sayac++)</td>
+                <td>@item.DepartmentName</td>
+                <td>@item.Faculty.FacultyName</td>
+            </tr>
+        }
+    </table>
+    <div style="margin-top: 20px;">
+        <p align="right"><a href="/Admin/NewDepartment/" class="btn btn-primary">Bölüm Ekle</a></p>
+    </div>
+</div>
+
+@Html.Partial("_AdminFooterPartial")

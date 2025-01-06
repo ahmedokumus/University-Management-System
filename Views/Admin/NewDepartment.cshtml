@@ -1,0 +1,21 @@
+﻿@model Web_Tasarim.Models.Department
+@{
+    ViewBag.Title = "Admin - Yeni Bölüm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px"><h1>Bölüm Ekleme</h1></div>
+    <form class="form-group" method="post">
+        @Html.Label("Fakülte seçimi")
+        @Html.DropDownListFor(x => x.FacultyId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        <br/>
+        @Html.Label("Bölüm Adı")
+        @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
+        <div style="margin-top: 20px;">
+            <p align="right"><button href="/Admin/NewDepartment/" class="btn btn-success" style="width: 100px">Ekle</button></p>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("_AdminFooterPartial")

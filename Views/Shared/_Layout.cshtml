@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="~/Content/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="#">Öğrenci Otomasyonu</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Ayarlar</a></li>
+                    <li><a class="dropdown-item" href="#">Hesap Hareketleri</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="/Security/LogOut/">Çıkış Yap</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        @if (User.IsInRole("1"))
+                        {
+            <div class="sb-sidenav-menu-heading">Admin İşlemleri</div>
+
+                            <a class="nav-link" href="/Admin/Index/">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
+                                Ana Menü
+                            </a>
+
+                                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#adminCollapseFaculties" aria-expanded="false" aria-controls="adminCollapseFaculties">
+                                                <div class="sb-nav-link-icon"><i class="fa-solid fa-building-columns"></i></div>
+                                                Fakülte İşlemleri
+                                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                            </a>
+                                                            <div class="collapse" id="adminCollapseFaculties" aria-labelledby="headingOne">
+                                                                <nav class="sb-sidenav-menu-nested nav">
+                                                                    <a class="nav-link" href="/Admin/FacultyList/">Fakülteleri Listele</a>
+                                                                    <a class="nav-link" href="/Admin/NewFaculty">Fakülte Ekle</a>
+                                                                </nav>
+                                                            </div>
+
+                                                                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#adminCollapseDepartments" aria-expanded="false" aria-controls="adminCollapseDepartments">
+                                                                                <div class="sb-nav-link-icon"><i class="fa-solid fa-bookmark"></i></div>
+                                                                                Bölüm İşlemleri
+                                                                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                                                            </a>
+                                                                                            <div class="collapse" id="adminCollapseDepartments" aria-labelledby="headingOne">
+                                                                                                <nav class="sb-sidenav-menu-nested nav">
+                                                                                                    <a class="nav-link" href="/Admin/DepartmentList/">Bölümleri Listele</a>
+                                                                                                    <a class="nav-link" href="/Admin/NewDepartment">Bölüm Ekle</a>
+                                                                                                </nav>
+                                                                                            </div>
+
+                                                                                                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#adminCollapseCourses" aria-expanded="false" aria-controls="adminCollapseCourses">
+                                                                                                                <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
+                                                                                                                Ders İşlemleri
+                                                                                                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                                                                                            </a>
+                                                                                                                            <div class="collapse" id="adminCollapseCourses" aria-labelledby="headingOne">
+                                                                                                                                <nav class="sb-sidenav-menu-nested nav">
+                                                                                                                                    <a class="nav-link" href="/Admin/CourseList/">Dersleri Listele</a>
+                                                                                                                                    <a class="nav-link" href="/Admin/NewCourse">Ders Ekle</a>
+                                                                                                                                </nav>
+                                                                                                                            </div>
+
+                                                                                                                                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#adminCollapseInstructors" aria-expanded="false" aria-controls="adminCollapseInstructors">
+                                                                                                                                                <div class="sb-nav-link-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                                                                                                                                                Öğr. Ele. İşlemleri
+                                                                                                                                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                                                                                                                            </a>
+                                                                                                                                                            <div class="collapse" id="adminCollapseInstructors" aria-labelledby="headingOne">
+                                                                                                                                                                <nav class="sb-sidenav-menu-nested nav">
+                                                                                                                                                                    <a class="nav-link" href="/Admin/InstructorList/">Öğr. Ele. Listele</a>
+                                                                                                                                                                    <a class="nav-link" href="/Admin/NewInstructor">Öğr. Ele. Ekle</a>
+                                                                                                                                                                </nav>
+                                                                                                                                                            </div>
+
+                                                                                                                                                                            <a class="nav-link" href="/Admin/StudentList/">
+                                                                                                                                                                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
+                                                                                                                                                                                Öğrencileri Listele
+                                                                                                                                                                            </a>}
+
+                        @if (User.IsInRole("2"))
+                        {
+            <div class="sb-sidenav-menu-heading">Memur İşlemleri</div>
+                            <a class="nav-link" href="/Officer/CourseList/">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus"></i></div>
+                                Öğr. Ele. Ders Ata
+                            </a>
+                                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#adminCollapseStudents" aria-expanded="false" aria-controls="adminCollapseStudents">
+                                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                                                Öğrenci İşlemleri
+                                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                            </a>
+                                                            <div class="collapse" id="adminCollapseStudents" aria-labelledby="headingOne">
+                                                                <nav class="sb-sidenav-menu-nested nav">
+                                                                    <a class="nav-link" href="/Officer/StudentList/">Öğrencileri Listele</a>
+                                                                    <a class="nav-link" href="/Officer/NewStudent">Öğrenci Kayıt</a>
+                                                                </nav>
+                                                            </div>}
+
+
+                        @if (User.IsInRole("3"))
+                        {
+            <div class="sb-sidenav-menu-heading">Öğretim Elemanı İşlemleri</div>
+                            <a class="nav-link" href="/Instructor/CourseList/">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                                Dersleri Listele
+                            </a>}
+
+                        @if (User.IsInRole("4"))
+                        {
+            <div class="sb-sidenav-menu-heading">Öğrenci İşlemleri</div>
+                            <a class="nav-link" href="/Student/ExamResults/">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                                Not Listesi
+                            </a>
+                                            <a class="nav-link" href="/Student/Courses/">
+                                                <div class="sb-nav-link-icon"><i class="fa-solid fa-folder-plus"></i></div>
+                                                Ders Kayıt
+                                            </a>}
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            @RenderBody()
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/Content/startbootstrap-sb-admin-gh-pages/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="~/Content/startbootstrap-sb-admin-gh-pages/assets/demo/chart-area-demo.js"></script>
+    <script src="~/Content/startbootstrap-sb-admin-gh-pages/assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="~/Content/startbootstrap-sb-admin-gh-pages/js/datatables-simple-demo.js"></script>
+</body>
+</html>

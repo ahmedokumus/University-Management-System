@@ -1,0 +1,41 @@
+﻿@using Web_Tasarim.Models
+@model List<Course>
+@{
+    ViewBag.Title = "Memur - Dersler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 10px"><h1>Dersler</h1></div>
+    <table class="table table-striped" style="margin-top:20px;">
+        <tr>
+            <th>Sıra</th>
+            <th>Ders</th>
+            <th>Bölüm</th>
+            <th>Fakülte</th>
+            <th style="text-align: center">Dersi Veren</th>
+        </tr>
+        @{ int sayac = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(sayac++)</td>
+                <td>@item.CourseName</td>
+                <td>@item.Department.DepartmentName</td>
+                <td>@item.Department.Faculty.FacultyName</td>
+                <td style="text-align: center">
+                    @if (item.InstructorId == null)
+                    {
+                        <a href="/Officer/CourseRegister/@item.CourseId" class="btn btn-outline-success">Dersi Hocaya Ata</a>
+                    }
+                    else
+                    {
+                        <div>@item.Instructor.Name @item.Instructor.Surname</div>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+@Html.Partial("_OfficerFooterPartial")

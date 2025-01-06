@@ -1,0 +1,26 @@
+﻿@model Web_Tasarim.Models.StudentCourse
+@{
+    ViewBag.Title = "Öğr.Ele. - Not Girişi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px"><h1>Not Girişi</h1></div>
+    <form class="form-group" method="post">
+        @Html.HiddenFor(x => x.Id)
+
+        @Html.Label("Öğrencinin Adı")
+        @Html.TextBoxFor(x => x.Student.Name, new { @class = "form-control", @readonly = "true" })
+        <br />
+        @Html.Label("Vize")
+        @Html.TextBoxFor(x => x.Vize, new { @class = "form-control" })
+        <br />
+        @Html.Label("Final")
+        @Html.TextBoxFor(x => x.Final, new { @class = "form-control" })
+        <div style="margin-top: 20px;">
+            <p align="right"><button class="btn btn-success" style="width: 150px">Notu Kaydet</button></p>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("_InstructorFooterPartial")

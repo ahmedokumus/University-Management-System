@@ -1,0 +1,33 @@
+﻿@using Web_Tasarim.Models
+@model List<Instructor>
+@{
+    ViewBag.Title = "Admin - Öğr. Elemanları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 10px"><h1>Öğretim Elemanları</h1></div>
+    <table class="table table-striped" style="margin-top:20px;">
+        <tr>
+            <th>Sıra</th>
+            <th>Kullanıcı Adı</th>
+            <th>Adı Soyadı</th>
+            <th>Şifre</th>
+        </tr>
+        @{ int sayac = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(sayac++)</td>
+                <td>@item.Username</td>
+                <td>@item.Name @item.Surname</td>
+                <td>@item.Password</td>
+            </tr>
+        }
+    </table>
+    <div style="margin-top: 20px;">
+        <p align="right"><a href="/Admin/NewInstructor/" class="btn btn-primary">Öğretim Elemanı Ekle</a></p>
+    </div>
+</div>
+
+@Html.Partial("_AdminFooterPartial")

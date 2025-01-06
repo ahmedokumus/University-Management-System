@@ -1,0 +1,31 @@
+﻿@model Web_Tasarim.Models.Instructor
+@{
+    ViewBag.Title = "Admin - Yeni Öğretim Elemanı";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px"><h1>Öğretim Elemanı Ekleme</h1></div>
+    <form class="form-group" method="post">
+        @Html.Label("Kullanıcı Adı")
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+        <br />
+        @Html.Label("Adı")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        <br />
+        @Html.Label("Soyadı")
+        @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+        <br />
+        @Html.Label("Şifre")
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+        <br />
+        @Html.Label("Rol")
+        @Html.TextBoxFor(x => x.Role, new { @class = "form-control", @readonly = true, @placeholder = "Öğretim Elemanı" })
+        <!-- Rol Controller da 3 olarak veriliyor -->
+        <div style="margin-top: 20px;">
+            <p align="right"><button href="/Admin/NewInstructor/" class="btn btn-success" style="width: 100px">Ekle</button></p>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("_AdminFooterPartial")

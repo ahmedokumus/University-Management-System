@@ -1,0 +1,67 @@
+﻿@using Web_Tasarim.Models;
+@model List<StudentCourse>
+@{
+    ViewBag.Title = "Öğrenci - Not Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 10px"><h1>Not Listesi</h1></div>
+    <table class="table table-striped" style="margin-top:20px;">
+        <tr>
+            <th>Öğrenci Adı</th>
+            <th>Ders Adı</th>
+            <th style="text-align: center">Vize</th>
+            <th style="text-align: center">Final</th>
+            <th style="text-align: center">Ortalama</th>
+            <th style="text-align: center">Durum</th>
+        </tr>
+        @{double? ortalama;}
+        @{string info = "Not Girilmemiş";}
+        @foreach (var item in Model)
+        {
+            <div hidden="true">@(ortalama=((item.Vize * 0.4) + (item.Final * 0.6)))</div>
+            <tr>
+                <td>@item.Student.Name</td>
+                <td>@item.Course.CourseName</td>
+                <td style="text-align: center">
+                    @if (item.Vize != null)
+                    {
+                        @item.Vize
+                    }
+                    else
+                    {
+                        @info
+                    }
+                </td>
+                <td style="text-align: center">
+                    @if (item.Final != null)
+                    {
+                        @item.Final
+                    }
+                    else
+                    {
+                        @info
+                    }
+                </td>
+                <td style="text-align: center">@ortalama</td>
+                <td style="text-align: center">
+                    @if (ortalama >= 55)
+                    {
+                        <div style="color: green">GEÇTİ</div>
+                    }
+                    else if (item.Vize == null || item.Final == null)
+                    {
+                        <div style="color: black">SONUÇLANDIRILMADI</div>
+                    }
+                    else
+                    {
+                        <div style="color: red">KALDI</div>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+@Html.Partial("_StudentFooterPartial")

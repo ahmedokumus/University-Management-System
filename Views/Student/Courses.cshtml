@@ -1,0 +1,42 @@
+﻿@using Web_Tasarim.Models
+@model List<Course>
+
+@{
+    ViewBag.Title = "Öğrenci - Dersler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 10px"><h1>Dersler</h1></div>
+    <table class="table table-striped" style="margin-top:20px;">
+        <tr>
+            <th>Sıra</th>
+            <th>Fakülte</th>
+            <th>Bölüm</th>
+            <th>Ders</th>
+            <th style="text-align: center">İşlem</th>
+        </tr>
+        @{ int sayac = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(sayac++)</td>
+                <td>@item.Department.Faculty.FacultyName</td>
+                <td>@item.Department.DepartmentName</td>
+                <td>@item.CourseName</td>
+                <td style="text-align: center">
+                    @if (ViewBag.courseId != item.CourseId)
+                    {
+                        <a href="/Student/CourseAdd/@item.CourseId" class="btn btn-outline-success">Derse Kaydol</a>
+                    }
+                    else
+                    {
+                        <div>Ders Kayıtlı</div>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+@Html.Partial("_StudentFooterPartial")

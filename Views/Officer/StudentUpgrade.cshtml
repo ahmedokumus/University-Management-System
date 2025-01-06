@@ -1,0 +1,34 @@
+﻿@model Web_Tasarim.Models.Student
+@{
+    ViewBag.Title = "Memur - Öğrenci Güncelleme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px"><h1>Öğrenci Bilgileri Güncelleme</h1></div>
+    @using (Html.BeginForm("Upgrade", "Officer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(x => x.StudentId)
+
+        @Html.Label("Kullanıcı Adı")
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+        <br />
+        @Html.Label("Öğrenci Resmi")
+        <input type="file" name="ImageUrl" class="form-control" />
+        <br />
+        @Html.Label("Adı")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        <br />
+        @Html.Label("Soyadı")
+        @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+        <br />
+        @Html.Label("Bölümü")
+        @Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+
+        <div style="margin-top: 20px;">
+            <p align="right"><button class="btn btn-success">Öğrenciyi Kaydet</button></p>
+        </div>
+    }
+</div>
+
+@Html.Partial("_OfficerFooterPartial")

@@ -1,0 +1,28 @@
+﻿@model Web_Tasarim.Models.Course
+@{
+    ViewBag.Title = "Memur - Ders Atama";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px; margin-right: 20px">
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px"><h1>Ders Atama</h1></div>
+    @using (Html.BeginForm("Register", "Officer", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.CourseId)
+
+        @Html.Label("Bölüm")
+        @Html.TextBoxFor(x => x.Department.DepartmentName, new { @class = "form-control", @readonly = true })
+        <br />
+        @Html.Label("Ders")
+        @Html.TextBoxFor(x => x.CourseName, new { @class = "form-control", @readonly = true })
+        <br />
+        @Html.Label("Öğretim Elemanı")
+        @Html.DropDownListFor(x => x.InstructorId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+
+        <div style="margin-top: 20px;">
+            <p align="right"><button class="btn btn-success">Derse Kaydet</button></p>
+        </div>
+    }
+</div>
+
+@Html.Partial("_OfficerFooterPartial")
