@@ -7,7 +7,7 @@ Bu proje, danışmanlık yaptığım bir öğrenci için dönem sonu projesi ola
 Bu proje, ASP.NET MVC framework'ü kullanılarak geliştirilmiş bir web uygulamasıdır. Modern web teknolojileri ve best practice'ler göz önünde bulundurularak tasarlanmıştır.
 
 ## Proje Görsel
-![Uploading proje.png…]()
+![proje](https://github.com/user-attachments/assets/6624fd55-5b9e-422f-81cd-2b098e4134a9)
 
 ## Kullanıcı Rolleri ve Görevleri
 
